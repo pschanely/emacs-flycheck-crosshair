@@ -47,7 +47,7 @@
 
 (flycheck-define-checker python-crosshair
   "Crosshair verifier."
-  :command ("crosshair" "check" source-original)
+  :command ("crosshair" "showresults" source-original)
   :error-patterns
   ((info    line-start (file-name) ":" line ":info:"    (message) line-end)
    (warning line-start (file-name) ":" line ":warning:" (message) line-end)
