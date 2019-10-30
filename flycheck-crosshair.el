@@ -52,8 +52,7 @@
   ((info    line-start (file-name) ":" line ":info:"    (message) line-end)
    (warning line-start (file-name) ":" line ":warning:" (message) line-end)
    (error   line-start (file-name) ":" line ":error:"   (message) line-end))
-  :modes python-mode
-  :predicate flycheck-buffer-saved-p)
+  :modes python-mode)
 
 
 (add-to-list 'flycheck-checkers 'python-crosshair t)
