@@ -9,16 +9,30 @@
 
 ;;; Commentary:
 
-;; This package adds support for cross to flycheck.  To enable it, add
-;; to your init.el:
+;; This package adds CrossHair support for flycheck.
+
+;; There isn't a MELPA package for this yet.
+;; To install, you can put this file in a place that your Emacs will
+;; look for packages.
+
+;; (or you can even copy the lines below between "require" and "provide",
+;; paste them into your initialization file, and call it a day!)
+
+;; Where is your initialization file?
+;; It's likely in ~/.emacs.el, ~/.emacs, or ~/.emacs.d/init.el
+
+;; After doing that, add these additional lines to your initialization file:
 
 ;; (require 'flycheck-crosshair)
+;; (add-hook 'python-mode-hook 'flycheck-mode)
 
-;; You'll want to chain crosshair so that it runs after another python
-;; checker, usually a type checker like mypy.  If you're using
-;; flycheck-mypy, for example:
+;; Additionally, you'll likely want to chain crosshair so that it runs after
+;; another python checker, usually a type checker like mypy.  If you're using
+;; flycheck-mypy, for example, add this line:
 
 ;; (flycheck-add-next-checker 'python-mypy 'python-crosshair)
+
+;; Then you should be all set.
 
 ;;; License:
 
@@ -51,7 +65,11 @@
   :error-patterns
   ((info    line-start (file-name) ":" line ":info:"    (message) line-end)
    (warning line-start (file-name) ":" line ":warning:" (message) line-end)
-   (error   line-start (file-name) ":" line ":error:"   (message) line-end))
+   (error   line-start (file-name) ":" line ":error:"   (message) line-end)
+   ; Above are older formats; newer formats below: (TODO remove above by EO2021)
+   (info    line-start (file-name) ":" line ": info: "    (message) line-end)
+   (warning line-start (file-name) ":" line ": warning: " (message) line-end)
+   (error   line-start (file-name) ":" line ": error: "   (message) line-end))
   :modes python-mode)
 
 
